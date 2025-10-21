@@ -1,0 +1,50 @@
+
+body {
+    font-family: "Fira Code", monospace;
+    background: #ffffff;
+    color: #000000;
+    text-align: center;
+    padding: 40px;
+   
+}
+
+textarea {
+    width: 20%;
+    height: 200px;
+    background: #b1f4fe;
+    color: #540101;
+    border: 1px solid #9ef7e6;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 16px;
+    resize: none;
+    box-shadow: 0 0 15px#36d0d6;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background: #45b400;
+    border-top-color: red;
+    border-top-color: #ffbb00;
+    border-top-color: rgb(255 0 0);
+    border-top-color: hsl(100deg 50% 25% / 75%);
+    border-top-color: currentColor;
+    border-top-color: transparent;
+    color: white;
+}
+
+pre {
+    text-align: left;
+    background: #d7ff92;
+    width: 20%;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 8px;
+    min-height: 50px;
+    overflow-x: auto;
+}
