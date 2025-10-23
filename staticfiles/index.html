@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>MiniLang Interpreter</title>
+    <!-- Cargar el CSS correctamente desde Django -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+  <h1>MiniLang Interpreter</h1>
+
+  <textarea id="codigo" rows="10" cols="60" placeholder="Escribe tu código MiniLang aquí..."></textarea>
+  <br>
+  <button id="run-btn">▶ Ejecutar</button>
+
+  <pre id="output"></pre>
+
+  <script>
+  document.getElementById("run-btn").addEventListener("click", async () => {
+      const codigo = document.getElementById("codigo").value.trim();
+      const outputEl = document.getElementById("output");
+
+      if (!codigo) {
+          outputEl.textContent = "⚠️ Escribe algo antes de ejecutar.";
+          outputEl.style.color = "orange";
+          return;
+      }
+
+      try {
+          const res = await fetch("/api/run/", {   // 👈 URL correcta hacia Django
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ codigo })     // 👈 campo correcto que espera el backend
+          });
+
+          const data = await res.json();
+
+          if (data.error) {
+              outputEl.textContent = "❌ Error:\n" + data.error;
+              outputEl.style.color = "red";
+          } else {
+              outputEl.textContent = "✅ Resultado:\n" + data.resultado;
+              outputEl.style.color = "#00ff99";
+          }
+      } catch (err) {
+          outputEl.textContent = "🚫 Error de conexión con el servidor.";
+          outputEl.style.color = "red";
+      }
+  });
+  </script>
+</body>
+</html>
