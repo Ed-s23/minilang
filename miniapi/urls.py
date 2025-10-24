@@ -20,15 +20,17 @@ Including another URLconf
 #!urlpatterns = [
  #!   path('admin/', admin.site.urls),
 #!]
-# miniapi/urls.py
 from django.contrib import admin
 from django.urls import path, include
-from django.views.generic import TemplateView
+from api.views import web_index
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('api.urls')),
-    path('', TemplateView.as_view(template_name="index.html")),  # Frontend
-    path('', TemplateView.as_view(template_name="index.html")),
+    path('api/', include('api.urls')),  # 👈 OJO: aquí no pongas 'api.urls.py'
+    path('', web_index, name='web_index'),
 ]
 
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

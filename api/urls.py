@@ -1,8 +1,7 @@
-# api/urls.py
-
 from django.urls import path
-from .views import run_minilang
+from . import views
 
 urlpatterns = [
-    path('run/', run_minilang, name='run_minilang'),
+    path('', views.web_index, name='web_index'),
+    path('run/', views.run_minilang, name='run_minilang'),
 ]

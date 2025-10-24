@@ -1,19 +1,18 @@
-"""
-Django settings for miniapi project.
-"""
-
 from pathlib import Path
 import os
 
-# --- BASE ---
+# BASE_DIR apunta a la raíz del proyecto
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# --- SECURITY ---
+# ⚠️ En producción deberías usar una variable de entorno para la clave secreta
 SECRET_KEY = 'django-insecure-xzcl_e%f8cweo8*m8_bur4#cs&4$_q7rywny+cr=43+xh^_8fd'
-DEBUG = True  # ⚠️ Cámbialo a False cuando termines de probar
-ALLOWED_HOSTS = ['*']  # En producción: ['tu_usuario.pythonanywhere.com']
 
-# --- APPS ---
+DEBUG = True  # Cambia a False en producción
+
+# ✅ Acepta todos los hosts (útil para PythonAnywhere y pruebas locales)
+ALLOWED_HOSTS = ['*']
+
+# -------------------- APPS --------------------
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -21,11 +20,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Apps externas
     'rest_framework',
+
+    # Tu app local
     'api',
 ]
 
-# --- MIDDLEWARE ---
+# -------------------- MIDDLEWARE --------------------
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -36,11 +39,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# --- URL & WSGI ---
+# -------------------- URLs y WSGI --------------------
 ROOT_URLCONF = 'miniapi.urls'
 WSGI_APPLICATION = 'miniapi.wsgi.application'
 
-# --- DATABASE ---
+# -------------------- BASE DE DATOS --------------------
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -48,12 +51,15 @@ DATABASES = {
     }
 }
 
-# --- TEMPLATES ---
+# -------------------- TEMPLATES --------------------
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+
+        # ✅ Aquí Django buscará tus HTML (como web/index.html)
         'DIRS': [os.path.join(BASE_DIR, 'web')],
         'APP_DIRS': True,
+
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -65,24 +71,23 @@ TEMPLATES = [
     },
 ]
 
-# --- PASSWORD VALIDATION ---
-AUTH_PASSWORD_VALIDATORS = [
-    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
-]
-
-# --- INTERNATIONALIZATION ---
+# -------------------- LOCALIZACIÓN --------------------
 LANGUAGE_CODE = 'es-mx'
 TIME_ZONE = 'America/Mexico_City'
 USE_I18N = True
 USE_TZ = True
 
-# --- STATIC FILES ---
+# -------------------- ARCHIVOS ESTÁTICOS --------------------
+# URL base para archivos estáticos (CSS, JS, imágenes)
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'web')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # ✅ Necesario para PythonAnywhere
 
-# --- DEFAULT PRIMARY KEY FIELD TYPE ---
+# ✅ Aquí Django buscará tus archivos estáticos durante el desarrollo
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'web'),  # tu carpeta con style.css
+]
+
+# ✅ Aquí se recopilan los archivos cuando haces `collectstatic`
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# -------------------- CONFIG FINAL --------------------
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

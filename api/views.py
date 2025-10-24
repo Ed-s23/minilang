@@ -29,3 +29,8 @@ def run_minilang(request):
 
     except Exception as e:
         return Response({"error": str(e)})
+from django.shortcuts import render
+
+def web_index(request):
+    return render(request, 'index.html')
+
