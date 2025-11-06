@@ -4,12 +4,12 @@
 <head>
     
     <meta charset="UTF-8">
-    <title>Ejercicio Minilang</title>
+    <title> Minilang Con IF y For Chido </title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
   <div class="container">
-      <h1>MiniLang Interpreter</h1>
+      <h1>Mini For e If</h1>
 
       <div class="editor-box">
           <textarea id="codigo" rows="10" cols="60" placeholder="Escribe tu operacion"></textarea>
@@ -27,7 +27,7 @@
       const outputEl = document.getElementById("output");
 
       if (!codigo) {
-          outputEl.textContent = "⚠️ Escribe algo antes de ejecutar.";
+          outputEl.textContent = "Escribe algo bless.";
           outputEl.style.color = "orange";
           return;
       }
@@ -49,7 +49,7 @@
               outputEl.style.color = "#00ff99";
           }
       } catch (err) {
-          outputEl.textContent = "🚫 Error de conexión con el servidor.";
+          outputEl.textContent = "Error de conexión con el servidor.";
           outputEl.style.color = "red";
       }
   });

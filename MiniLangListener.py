@@ -17,6 +17,15 @@ class MiniLangListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by MiniLangParser#statementList.
+    def enterStatementList(self, ctx:MiniLangParser.StatementListContext):
+        pass
+
+    # Exit a parse tree produced by MiniLangParser#statementList.
+    def exitStatementList(self, ctx:MiniLangParser.StatementListContext):
+        pass
+
+
     # Enter a parse tree produced by MiniLangParser#statement.
     def enterStatement(self, ctx:MiniLangParser.StatementContext):
         pass
@@ -41,6 +50,33 @@ class MiniLangListener(ParseTreeListener):
 
     # Exit a parse tree produced by MiniLangParser#print.
     def exitPrint(self, ctx:MiniLangParser.PrintContext):
+        pass
+
+
+    # Enter a parse tree produced by MiniLangParser#ifStatement.
+    def enterIfStatement(self, ctx:MiniLangParser.IfStatementContext):
+        pass
+
+    # Exit a parse tree produced by MiniLangParser#ifStatement.
+    def exitIfStatement(self, ctx:MiniLangParser.IfStatementContext):
+        pass
+
+
+    # Enter a parse tree produced by MiniLangParser#forStatement.
+    def enterForStatement(self, ctx:MiniLangParser.ForStatementContext):
+        pass
+
+    # Exit a parse tree produced by MiniLangParser#forStatement.
+    def exitForStatement(self, ctx:MiniLangParser.ForStatementContext):
+        pass
+
+
+    # Enter a parse tree produced by MiniLangParser#condition.
+    def enterCondition(self, ctx:MiniLangParser.ConditionContext):
+        pass
+
+    # Exit a parse tree produced by MiniLangParser#condition.
+    def exitCondition(self, ctx:MiniLangParser.ConditionContext):
         pass
 
 

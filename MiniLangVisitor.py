@@ -14,6 +14,11 @@ class MiniLangVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by MiniLangParser#statementList.
+    def visitStatementList(self, ctx:MiniLangParser.StatementListContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by MiniLangParser#statement.
     def visitStatement(self, ctx:MiniLangParser.StatementContext):
         return self.visitChildren(ctx)
@@ -26,6 +31,21 @@ class MiniLangVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by MiniLangParser#print.
     def visitPrint(self, ctx:MiniLangParser.PrintContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MiniLangParser#ifStatement.
+    def visitIfStatement(self, ctx:MiniLangParser.IfStatementContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MiniLangParser#forStatement.
+    def visitForStatement(self, ctx:MiniLangParser.ForStatementContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MiniLangParser#condition.
+    def visitCondition(self, ctx:MiniLangParser.ConditionContext):
         return self.visitChildren(ctx)
 
 
